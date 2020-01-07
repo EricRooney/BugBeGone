@@ -37,14 +37,16 @@ export default new Vuex.Store({
       let res = await _api.get("bugs");
       commit("setAllBugs", res.data);
     },
-    async getBugById({ commit, dispatch }, id) {
+    async getActiveBug({ commit, dispatch }, id) {
       let res = await _api.get("bugs/" + id);
       commit("setActiveBug", res.data);
     },
     async createBug({ commit, dispatch }, bug) {
+      console.log("Bug Creating");
       let res = await _api.post("bugs", bug);
       // dispatch("getAllBugs"); //works but is a second call to the server
       commit("addBug", res.data);
+      commit("setActiveBug", res.data.id);
     },
     async editBug({ commit, dispatch }, id, bug) {
       await _api.put("bugs/" + id);

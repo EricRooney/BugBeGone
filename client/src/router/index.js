@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+// @ts-ignore
 import Home from "../views/Home.vue";
+// @ts-ignore
 import BugDetails from "../views/BugDetails.vue";
 
 Vue.use(VueRouter);
@@ -12,9 +14,13 @@ const routes = [
     component: Home
   },
   {
-    path: "/bugDetails",
+    path: "/bugs/:id",
     name: "bugDetails",
     component: BugDetails
+  },
+  {
+    path: "*", //saftey net that returns bad routes back to the home
+    redirect: "/"
   }
 ];
 

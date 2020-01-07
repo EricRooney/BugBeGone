@@ -1,13 +1,18 @@
 <template>
   <div id="app">
-
-    <router-view/>
+    <router-link v-if="$route.name != 'home'" :to="{ name: 'home' }"
+      >Home</router-link
+    >
+    <!-- <router-link v-if="$route.name != 'bugDetails'" :to="{ name: 'bugDetails' }"
+      >Bug Details</router-link
+    > -->
+    <router-view />
   </div>
 </template>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
